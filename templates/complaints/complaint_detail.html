@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}مشاهده جزییات{% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header text-center bg-dark text-white"><h2>  جزییات شکایت</h2></div>
+                <div class="card-body text-right" dir="rtl">
+                    <p>عنوان:{{ complaint.title }}</p>
+                    <p>متن شکایت: {{ complaint.description }}</p>
+                    <p><strong>وضعیت:</strong> {{ complaint.status }}</p>
+                    <p><strong>ایجاد شده در:</strong> {{ complaint.created_at }}</p>
+                    <a href="{% url 'edit_complaint' complaint.id %}" class="btn btn-warning">ویرایش</a>
+                    <a href="{% url 'delete_complaint' complaint.id %}" class="btn btn-danger">حذف</a>
+                    <a href="{% url 'complaint_list' %}" class="btn btn-primary">بازگشت به لیست</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

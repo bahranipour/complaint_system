@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}ثبت نام {% endblock title %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row mt-3">
+        <div class="col-md-5 col-sm-12 mx-auto">
+            <div class="card bg-light">
+                <div class="card-header bg-info text-white">
+                    <h2 class="text-center mb-4">ثبت‌نام</h2>
+                </div>
+                <div class="card-body text-right" dir="rtl">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{form.username.id_for_label}}" class="form-label">نام کاربری</label>
+                            <input type="text" class="form-control" id="{{form.username.id_for_label }}" name="{{form.username.name}}">
+                            {% if form.username.errors %}
+                                <div class="text-danger">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{form.email.id_for_label}}" class="form-label">ایمیل</label>
+                            <input type="email" class="form-control" id="{{form.email.id_for_label}}" name="{{form.email.name}}">
+                            {% if form.email.errors %}
+                                <div class="text-danger">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{form.phone_number.id_for_label}}" class="form-label">شماره تماس</label>
+                            <input type="text" class="form-control" id="{{form.phone_number.id_for_label}}" name="{{form.phone_number.name}}">
+                            {% if form.phone_number.errors %}
+                                <div class="text-danger">{{ form.phone_number.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{form.password1.id_for_label}}" class="form-label">کلمه عبور</label>
+                            <input type="password" class="form-control" id="{{form.password1.id_for_label}}" name="{{form.password1.name}}">
+                            {% if form.password1.errors %}
+                                <div class="text-danger">{{ form.password1.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{form.password2.id_for_label}}" class="form-label">تکرار کلمه عبور</label>
+                            <input type="password" class="form-control" id="{{form.password2.id_for_label}}" name="{{form.password2.name}}">
+                           
+                            {% if form.password2.errors %}
+                                <div class="text-danger">{{ form.password2.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary">ثبت‌نام</button>
+                    </form>
+                    <hr>
+                    <p class="mt-3">حساب کاربری دارید؟ <a href="{% url 'login' %}">وارد شوید</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+  <br><br>
+</div>
+{% endblock %}

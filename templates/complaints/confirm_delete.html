@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}حذف شکایت{% endblock title %}
+{% block content %}
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-6 mx-auto" dir="rtl">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h3 class="text-center">حذف شکایت</h3>
+                    </div>
+                    <div class="card-body text-right" dir="rtl">
+                        <p>آیا می خواهید شکایت "{{ complaint.title }}" را حذف کنید؟</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-danger">بله ، می خواهم حذف کنم</button>
+                            <a href="{% url 'complaint_detail' complaint.id %}" class="btn btn-success float-left">انصراف</a>
+                        </form>
+                        <hr>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
